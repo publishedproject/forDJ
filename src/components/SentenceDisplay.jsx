@@ -338,7 +338,10 @@ const SentenceDisplay = ({
             </svg>
           )}
           
-          <div className={styles.sentenceText}>
+          <div 
+            className={styles.sentenceText}
+            style={mode === 'reverse' ? { transform: 'scaleX(-1)' } : {}}
+          >
             {sentence.split('').map((char, index) => {
               // Check if this character is followed by a space (indicating end of word)
               const isEndOfWord = sentence[index + 1] === ' ' || index === sentence.length - 1;
@@ -356,7 +359,6 @@ const SentenceDisplay = ({
                     ${isEndOfWord ? styles.wordSeparator : ''}
                     ${isReverseMode ? styles.reverseChar : ''}
                   `}
-                  style={isReverseMode ? { transform: 'scale(-1, 1)' } : {}}
                 >
                   {char}
                 </span>

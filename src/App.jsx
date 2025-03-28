@@ -118,84 +118,8 @@ function App() {
         let expected = selectedSentence;
         
         if (mode === 'reverse') {
-          // For reverse mode, both reverse the order AND mirror/flip each character
-          const mirroredChars = [];
-          for (let char of selectedSentence) {
-            // Use Unicode character mapping to mirror when possible,
-            // or keep original for characters without mirror equivalents
-            switch(char) {
-              case 'a': mirroredChars.push('ɐ'); break;
-              case 'b': mirroredChars.push('d'); break;
-              case 'c': mirroredChars.push('ɔ'); break;
-              case 'd': mirroredChars.push('b'); break;
-              case 'e': mirroredChars.push('ǝ'); break;
-              case 'f': mirroredChars.push('ɟ'); break;
-              case 'g': mirroredChars.push('ƃ'); break;
-              case 'h': mirroredChars.push('ɥ'); break;
-              case 'i': mirroredChars.push('ᴉ'); break;
-              case 'j': mirroredChars.push('ɾ'); break;
-              case 'k': mirroredChars.push('ʞ'); break;
-              case 'l': mirroredChars.push('l'); break;
-              case 'm': mirroredChars.push('ɯ'); break;
-              case 'n': mirroredChars.push('u'); break;
-              case 'o': mirroredChars.push('o'); break;
-              case 'p': mirroredChars.push('d'); break;
-              case 'q': mirroredChars.push('b'); break;
-              case 'r': mirroredChars.push('ɹ'); break;
-              case 's': mirroredChars.push('s'); break;
-              case 't': mirroredChars.push('ʇ'); break;
-              case 'u': mirroredChars.push('n'); break;
-              case 'v': mirroredChars.push('ʌ'); break;
-              case 'w': mirroredChars.push('ʍ'); break;
-              case 'x': mirroredChars.push('x'); break;
-              case 'y': mirroredChars.push('ʎ'); break;
-              case 'z': mirroredChars.push('z'); break;
-              case 'A': mirroredChars.push('∀'); break;
-              case 'B': mirroredChars.push('ꓭ'); break;
-              case 'C': mirroredChars.push('Ɔ'); break;
-              case 'D': mirroredChars.push('ꓷ'); break;
-              case 'E': mirroredChars.push('Ǝ'); break;
-              case 'F': mirroredChars.push('Ⅎ'); break;
-              case 'G': mirroredChars.push('⅁'); break;
-              case 'H': mirroredChars.push('H'); break;
-              case 'I': mirroredChars.push('I'); break;
-              case 'J': mirroredChars.push('ꓩ'); break;
-              case 'K': mirroredChars.push('ꓘ'); break;
-              case 'L': mirroredChars.push('⅂'); break;
-              case 'M': mirroredChars.push('W'); break;
-              case 'N': mirroredChars.push('N'); break;
-              case 'O': mirroredChars.push('O'); break;
-              case 'P': mirroredChars.push('Ԁ'); break;
-              case 'Q': mirroredChars.push('Q'); break;
-              case 'R': mirroredChars.push('ꓤ'); break;
-              case 'S': mirroredChars.push('S'); break;
-              case 'T': mirroredChars.push('⊥'); break;
-              case 'U': mirroredChars.push('∩'); break;
-              case 'V': mirroredChars.push('Λ'); break;
-              case 'W': mirroredChars.push('M'); break;
-              case 'X': mirroredChars.push('X'); break;
-              case 'Y': mirroredChars.push('⅄'); break;
-              case 'Z': mirroredChars.push('Z'); break;
-              case ',': mirroredChars.push('\''); break;
-              case '.': mirroredChars.push('˙'); break;
-              case '?': mirroredChars.push('¿'); break;
-              case '!': mirroredChars.push('¡'); break;
-              case '(': mirroredChars.push(')'); break;
-              case ')': mirroredChars.push('('); break;
-              case '[': mirroredChars.push(']'); break;
-              case ']': mirroredChars.push('['); break;
-              case '{': mirroredChars.push('}'); break;
-              case '}': mirroredChars.push('{'); break;
-              case '<': mirroredChars.push('>'); break;
-              case '>': mirroredChars.push('<'); break;
-              case '/': mirroredChars.push('\\'); break;
-              case '\\': mirroredChars.push('/'); break;
-              case '_': mirroredChars.push('‾'); break;
-              default: mirroredChars.push(char); break;
-            }
-          }
-          // Reverse the order of mirrored characters
-          displayText = mirroredChars.reverse().join('');
+          // Just reverse the order of characters without using special mirrored Unicode characters
+          displayText = selectedSentence.split('').reverse().join('');
         } else if (mode === 'jumbled') {
           displayText = selectedSentence.split(' ').map(word => {
             if (word.length <= 2) return word;
@@ -359,84 +283,8 @@ function App() {
         let expected = selectedSentence;
         
         if (currentMode === 'reverse') {
-          // For reverse mode, both reverse the order AND mirror/flip each character
-          const mirroredChars = [];
-          for (let char of selectedSentence) {
-            // Use Unicode character mapping to mirror when possible,
-            // or keep original for characters without mirror equivalents
-            switch(char) {
-              case 'a': mirroredChars.push('ɐ'); break;
-              case 'b': mirroredChars.push('d'); break;
-              case 'c': mirroredChars.push('ɔ'); break;
-              case 'd': mirroredChars.push('b'); break;
-              case 'e': mirroredChars.push('ǝ'); break;
-              case 'f': mirroredChars.push('ɟ'); break;
-              case 'g': mirroredChars.push('ƃ'); break;
-              case 'h': mirroredChars.push('ɥ'); break;
-              case 'i': mirroredChars.push('ᴉ'); break;
-              case 'j': mirroredChars.push('ɾ'); break;
-              case 'k': mirroredChars.push('ʞ'); break;
-              case 'l': mirroredChars.push('l'); break;
-              case 'm': mirroredChars.push('ɯ'); break;
-              case 'n': mirroredChars.push('u'); break;
-              case 'o': mirroredChars.push('o'); break;
-              case 'p': mirroredChars.push('d'); break;
-              case 'q': mirroredChars.push('b'); break;
-              case 'r': mirroredChars.push('ɹ'); break;
-              case 's': mirroredChars.push('s'); break;
-              case 't': mirroredChars.push('ʇ'); break;
-              case 'u': mirroredChars.push('n'); break;
-              case 'v': mirroredChars.push('ʌ'); break;
-              case 'w': mirroredChars.push('ʍ'); break;
-              case 'x': mirroredChars.push('x'); break;
-              case 'y': mirroredChars.push('ʎ'); break;
-              case 'z': mirroredChars.push('z'); break;
-              case 'A': mirroredChars.push('∀'); break;
-              case 'B': mirroredChars.push('ꓭ'); break;
-              case 'C': mirroredChars.push('Ɔ'); break;
-              case 'D': mirroredChars.push('ꓷ'); break;
-              case 'E': mirroredChars.push('Ǝ'); break;
-              case 'F': mirroredChars.push('Ⅎ'); break;
-              case 'G': mirroredChars.push('⅁'); break;
-              case 'H': mirroredChars.push('H'); break;
-              case 'I': mirroredChars.push('I'); break;
-              case 'J': mirroredChars.push('ꓩ'); break;
-              case 'K': mirroredChars.push('ꓘ'); break;
-              case 'L': mirroredChars.push('⅂'); break;
-              case 'M': mirroredChars.push('W'); break;
-              case 'N': mirroredChars.push('N'); break;
-              case 'O': mirroredChars.push('O'); break;
-              case 'P': mirroredChars.push('Ԁ'); break;
-              case 'Q': mirroredChars.push('Q'); break;
-              case 'R': mirroredChars.push('ꓤ'); break;
-              case 'S': mirroredChars.push('S'); break;
-              case 'T': mirroredChars.push('⊥'); break;
-              case 'U': mirroredChars.push('∩'); break;
-              case 'V': mirroredChars.push('Λ'); break;
-              case 'W': mirroredChars.push('M'); break;
-              case 'X': mirroredChars.push('X'); break;
-              case 'Y': mirroredChars.push('⅄'); break;
-              case 'Z': mirroredChars.push('Z'); break;
-              case ',': mirroredChars.push('\''); break;
-              case '.': mirroredChars.push('˙'); break;
-              case '?': mirroredChars.push('¿'); break;
-              case '!': mirroredChars.push('¡'); break;
-              case '(': mirroredChars.push(')'); break;
-              case ')': mirroredChars.push('('); break;
-              case '[': mirroredChars.push(']'); break;
-              case ']': mirroredChars.push('['); break;
-              case '{': mirroredChars.push('}'); break;
-              case '}': mirroredChars.push('{'); break;
-              case '<': mirroredChars.push('>'); break;
-              case '>': mirroredChars.push('<'); break;
-              case '/': mirroredChars.push('\\'); break;
-              case '\\': mirroredChars.push('/'); break;
-              case '_': mirroredChars.push('‾'); break;
-              default: mirroredChars.push(char); break;
-            }
-          }
-          // Reverse the order of mirrored characters
-          displayText = mirroredChars.reverse().join('');
+          // Just reverse the order of characters without using special mirrored Unicode characters
+          displayText = selectedSentence.split('').reverse().join('');
         } else if (currentMode === 'jumbled') {
           displayText = selectedSentence.split(' ').map(word => {
             if (word.length <= 2) return word;

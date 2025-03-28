@@ -118,11 +118,11 @@
 /* Special styling for reversed characters to enhance mirror effect */
 .reverseChar {
   display: inline-block;
-  transform-origin: center center;
   font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
   position: relative;
   font-weight: 500;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+  /* Add a subtle shadow for better legibility of mirrored text */
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
 }
 
 /* Make space characters more visible */
