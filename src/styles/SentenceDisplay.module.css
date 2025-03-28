@@ -1,0 +1,257 @@
+.sentenceContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.guidance {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reverseIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  background: rgba(79, 70, 229, 0.08);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
+  animation: glowPulse 2s infinite;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  animation: arrowPulse 1.5s infinite;
+}
+
+.arrow:first-child {
+  animation-delay: 0.2s;
+}
+
+.reverseLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sentenceArea {
+  background-color: rgba(25, 28, 50, 0.8);
+  padding: 30px;
+  border-radius: 16px;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  backdrop-filter: blur(4px);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.sentenceArea::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.sentenceText {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: var(--text-secondary, #cbd5e1);
+  text-align: left;
+  width: 100%;
+  overflow-wrap: break-word;
+  position: relative;
+  z-index: 5;
+  letter-spacing: 0.07em;
+  word-spacing: 1.25em;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 60px;
+}
+
+.placeholder {
+  opacity: 0.5;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  display: block;
+  width: 100%;
+  animation: pulse 1.5s infinite;
+}
+
+.char {
+  display: inline-block;
+  transition: all 0.2s ease;
+  padding: 0 2px;
+  margin: 0 1px;
+  border-radius: 2px;
+  position: relative;
+  height: 1.8em;
+  line-height: 1.8;
+  vertical-align: baseline;
+}
+
+/* Special styling for reversed characters to enhance mirror effect */
+.reverseChar {
+  display: inline-block;
+  transform-origin: center center;
+  font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+  position: relative;
+  font-weight: 500;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Make space characters more visible */
+.char:empty::after {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  bottom: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+/* Add a stronger visual separation between words */
+.char.wordSeparator {
+  margin-right: 0.75em;
+}
+
+.pending {
+  color: var(--text-secondary);
+}
+
+.correct {
+  color: var(--correct-color);
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+}
+
+.incorrect {
+  color: var(--incorrect-color);
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+  text-decoration: underline wavy rgba(239, 68, 68, 0.5);
+  text-underline-offset: 5px;
+}
+
+/* Add a subtle trailing effect for typed characters */
+.char::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.correct::after,
+.incorrect::after {
+  width: 100%;
+}
+
+/* SVG connections for reverse mode */
+.connectionSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Progress bar styling */
+.progressContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  height: 8px;
+  background-color: rgba(15, 18, 36, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), var(--correct-color));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-3px);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+  }
+}
+
+@media (max-width: 600px) {
+  .sentenceText {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .sentenceArea {
+    padding: 15px 20px;
+    min-height: 100px;
+  }
+} 

@@ -1,0 +1,180 @@
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.logoSvg {
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(108, 139, 255, 0.3));
+}
+
+/* Logo sizing */
+.logoSmall {
+  transform: scale(0.8);
+}
+
+.logoSmall .logoSvg {
+  width: 60px;
+  height: 40px;
+}
+
+.logoSmall .logoText {
+  font-size: 1rem;
+}
+
+.logoMedium {
+  transform: scale(1.2);
+}
+
+.logoMedium .logoSvg {
+  width: 90px;
+  height: 60px;
+}
+
+.logoMedium .logoText {
+  font-size: 1.5rem;
+}
+
+.logoLarge {
+  transform: scale(1.8);
+}
+
+.logoLarge .logoSvg {
+  width: 150px;
+  height: 100px;
+}
+
+.logoLarge .logoText {
+  font-size: 2.5rem;
+}
+
+/* Text styling */
+.logoText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  display: flex;
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
+  position: relative;
+  font-size: 2.8rem;
+}
+
+.firstWord, .secondWord {
+  display: flex;
+  position: relative;
+}
+
+.secondWord {
+  color: var(--accent-color);
+}
+
+.firstWord span, .secondWord span {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+}
+
+/* Shimmer animation overlay */
+.shimmerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.5) 25%, 
+    rgba(255, 255, 255, 0.5) 35%, 
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logoMedium {
+    transform: scale(1);
+  }
+  
+  .logoLarge {
+    transform: scale(1.5);
+  }
+  
+  .logoText {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoMedium {
+    transform: scale(0.8);
+  }
+  
+  .logoLarge {
+    transform: scale(1.2);
+  }
+  
+  .logoText {
+    font-size: 2rem;
+  }
+}
+
+.typist {
+  color: var(--accent-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.flow {
+  color: var(--accent-secondary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-left: 0.1em;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+  .logoSmall {
+    width: 80px;
+    height: 60px;
+  }
+
+  .logoMedium {
+    width: 120px;
+    height: 80px;
+  }
+
+  .logoLarge {
+    width: 180px;
+    height: 120px;
+  }
+
+  .typist, .flow {
+    font-size: 1.2rem;
+  }
+} 

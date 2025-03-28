@@ -1,0 +1,27 @@
+.timerContainer {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.timerBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.timerText {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+} 

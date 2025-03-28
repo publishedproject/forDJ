@@ -1,0 +1,128 @@
+.cursorContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+  will-change: transform;
+}
+
+.cursor {
+  width: 2px;
+  height: 18px;
+  background-color: white;
+  border-radius: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+.cursorGlow {
+  position: absolute;
+  width: 8px;
+  height: 24px;
+  border-radius: 4px;
+  filter: blur(4px);
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.particles {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 0;
+  transform-origin: center;
+  opacity: 0.8;
+  will-change: transform, opacity;
+}
+
+/* Advanced cursor shapes for different states */
+.cursor::before,
+.cursor::after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background-color: inherit;
+}
+
+/* For typing state, add little notches */
+.cursor[data-state="typing"]::before,
+.cursor[data-state="typing"]::after {
+  opacity: 1;
+  width: 2px;
+  height: 2px;
+  right: -2px;
+  border-radius: 50%;
+}
+
+.cursor[data-state="typing"]::before {
+  top: 0;
+}
+
+.cursor[data-state="typing"]::after {
+  bottom: 0;
+}
+
+/* For error state, add pulsing red effect */
+.cursor[data-state="error"] {
+  box-shadow: 0 0 10px var(--incorrect-color);
+}
+
+/* For success state, add green glow */
+.cursor[data-state="success"] {
+  box-shadow: 0 0 10px var(--correct-color);
+}
+
+/* State-based styling */
+.typing .cursor {
+  width: 3px;
+  background-color: var(--accent-color);
+}
+
+.typing .cursorGlow {
+  opacity: 0.5;
+  background-color: var(--glow-accent);
+}
+
+.error .cursor {
+  width: 4px;
+  background-color: var(--incorrect-color);
+}
+
+.error .cursorGlow {
+  opacity: 0.7;
+  background-color: var(--glow-incorrect);
+}
+
+.success .cursor {
+  width: 3px;
+  background-color: var(--correct-color);
+}
+
+.success .cursorGlow {
+  opacity: 0.5;
+  background-color: var(--glow-correct);
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+} 
